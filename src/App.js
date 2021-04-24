@@ -10,6 +10,7 @@ function App({ query, pageNum, queryResults, loading, photos }) {
     const loadMore = () => {
         queryResults({ query, page: pageNum})
     }
+    console.log(process.env.PHOTO_ACCESS_KEY);
   return (
     <div className="App">
       <div className="container">
