@@ -2,7 +2,7 @@ import { createApi } from "unsplash-js";
 import {ActionTypes} from "../constants/actionTypes";
 
 const unsplash = createApi({
-    accessKey: process.env.PHOTO_ACCESS_KEY,
+    accessKey: process.env.ACCESS_KEY,
 });
 
 export const getQueryResults = ({ query = '' , page = 1, success = null}) => {
