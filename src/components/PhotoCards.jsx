@@ -16,12 +16,12 @@ function PhotoCards({ photos }) {
     return (
         <div className="card-list">
             {
-                photos.map((photo) => (
-                    <div className="card" key={photo.id} onClick={() => handleShowModal(photo.id)}>
+                photos.map((pic) => (
+                    <div className="card" key={pic.id} onClick={() => handleShowModal(pic.id)}>
                         <img
                             className="card--image"
-                            alt={photo?.alt_description}
-                            src={photo?.urls?.full}
+                            alt={pic?.alt_description}
+                            src={pic?.urls?.full}
                             width="50%"
                             height="50%"
                         />

@@ -13,7 +13,7 @@ function Modal({ show, handleClose, photoId, photos, pageNum, loading, queryResu
         const result = photos.find((photo) => photo.id === photoId);
         setTargetPhoto(result);
         return () => setTargetPhoto(null);
-    }, [photoId])
+    }, [photoId, photos])
 
     const handleForward = async () => {
         const index = photos.indexOf(targetPhoto);
