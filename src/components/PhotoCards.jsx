@@ -21,7 +21,7 @@ function PhotoCards({ photos }) {
                         <img
                             className="card--image"
                             alt={pic?.alt_description}
-                            src={pic?.urls?.full}
+                            src={pic?.urls?.regular}
                             width="50%"
                             height="50%"
                         />
