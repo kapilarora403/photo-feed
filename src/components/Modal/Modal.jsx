@@ -13,7 +13,8 @@ function Modal({ show, handleClose, photoId, photos, pageNum, loading, queryResu
         const result = photos.find((photo) => photo.id === photoId);
         setTargetPhoto(result);
         return () => setTargetPhoto(null);
-    }, [photoId, photos])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [photoId])
 
     const handleForward = async () => {
         const index = photos.indexOf(targetPhoto);
