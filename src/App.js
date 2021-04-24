@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { connect } from "react-redux";
+import PhotoSearchbar from "components/PhotoSearchbar";
+import PhotoCards from "./components/PhotoCards";
+import React from "react";
+import {getQueryResults} from "./actions/photoActions";
+import InfiniteScroller from "./components/InfiniteScroller";
 
-function App() {
+function App({ query, pageNum, queryResults, loading, photos }) {
+    const loadMore = () => {
+        queryResults({ query, page: pageNum})
+    }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <h1 className="title">Photo Search App</h1>
+        <PhotoSearchbar />
+        <PhotoCards />
+          {photos.length > 0 && (
+              <div className="infiniteWrapper">
+              <InfiniteScroller callback={loadMore} loading={loading} />
+              </div>
+          )}
+      </div>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+    ...state
+});
+
+const mapDispatchToProps = dispatch => ({
+    queryResults: (query) => dispatch(getQueryResults(query)),
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
